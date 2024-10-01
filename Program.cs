@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 List<Person> hotelStaff =
 [
-new Manager(
+    new Manager(
         name: "Lisa Ledarsson",
         age: 40,
         employeeId: "M001",
