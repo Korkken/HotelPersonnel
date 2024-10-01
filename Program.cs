@@ -4,15 +4,10 @@ using System.ComponentModel;
 using System.Xml.Linq;
 
 
-HotelStaff();
 
-
-
-void HotelStaff()
-{
-    List<Person> hotelStaff =
+List<Person> hotelStaff =
 [
-    new Manager(
+new Manager(
         name: "Lisa Ledarsson",
         age: 40,
         employeeId: "M001",
@@ -47,35 +42,35 @@ void HotelStaff()
         employeeId: "D001",
         startDate: new DateTime(2022, 1, 2),
         salary: 30000
-        )
+)
 ];
 
 
-    Console.WriteLine("Hotellets personal:");
-    foreach (var person in hotelStaff)
+Console.WriteLine("Hotellets personal:");
+foreach (var person in hotelStaff)
+{
+    person.PrintInfo();
+    person.Introduce();
+    if (person is Manager manager)
     {
-        person.PrintInfo();
-        person.Introduce();
-        if (person is Manager manager)
-        {
-            manager.HoldMeeting();
-        }
-        else if (person is Employee employee)
-        {
-            employee.Work();
-        }
-        else if (person is Consultant consultant)
-        {
-            consultant.GiveAdvice();
-        }
+        manager.HoldMeeting();
+    }
+    else if (person is Employee employee)
+    {
+        employee.Work();
+    }
+    else if (person is Consultant consultant)
+    {
+        consultant.GiveAdvice();
+    }
 
-        Console.WriteLine();
-    }
-    foreach (var person in hotelStaff)
-    {
-        person.DoWork();
-    }
+    Console.WriteLine();
 }
+foreach (var person in hotelStaff)
+{
+    person.DoWork();
+}
+
 
 
 

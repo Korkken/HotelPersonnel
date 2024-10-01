@@ -9,7 +9,7 @@ namespace HotelPersonnel
 {
     internal class HouseKeeper : Person
     {
-        public HouseKeeper(string name, int age, string employeeId, DateTime startDate, decimal salary) 
+        public HouseKeeper(string name, int age, string employeeId, DateTime startDate, decimal salary)
             : base(name, age, employeeId, startDate, salary)
         {
         }

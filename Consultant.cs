@@ -13,14 +13,14 @@ namespace HotelPersonnel
         public decimal HourlyRate { get; set; }
         public string ConsultingFirm { get; set; }
         public string Expertise { get; set; }
-        public Consultant(string name, int age, decimal hourlyRate, string consultingFirm, string employeeId, DateTime startDate, int salary, string expertise )
+        public Consultant(string name, int age, decimal hourlyRate, string consultingFirm, string employeeId, DateTime startDate, int salary, string expertise)
             : base(name, age, employeeId, startDate, salary)
         {
             HourlyRate = hourlyRate;
             ConsultingFirm = consultingFirm;
             Expertise = expertise;
         }
-        public override void PrintInfo() 
+        public override void PrintInfo()
         {
             base.PrintInfo();
         }
