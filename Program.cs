@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using HotelPersonnel;
+using System.ComponentModel;
 using System.Xml.Linq;
 
 
 HotelStaff();
-StaffWork();
+
 
 
 void HotelStaff()
@@ -70,52 +71,13 @@ void HotelStaff()
 
         Console.WriteLine();
     }
-}
-void StaffWork()
-{
-    List<Person> staff = new List<Person>();
-
-    staff.Add(new Manager("Lisa Ledarsson", 40, "M001", new DateTime(2020, 1, 1), 50000, "Administration"));
-    staff.Add(new Employee("Erik Eriksson", 30, "E001", new DateTime(2022, 3, 15), 30000, "Receptionist", "Front Desk"));
-    staff.Add(new Consultant("Eva Expert", 35, 1000, "Hotell Experterna AB", "C001", new DateTime(2023, 1, 1), 0, "Hotelledare"));
-    staff.Add(new HouseKeeper("Anna clean", 32, "D001", new DateTime(2022, 1, 2), 30000));
-
-    foreach (Person person in staff)
+    foreach (var person in hotelStaff)
     {
         person.DoWork();
     }
 }
-public class Person
-{
-    public string Name;
-    public int Age;
-    public string EmployeeId;
-    public DateTime StartDate;
-    public decimal Salary;
-
-    public Person(string name, int age, string employeeId, DateTime startDate, decimal salary)
-    {
-        Name = name;
-        Age = age;
-        EmployeeId = employeeId;
-        StartDate = startDate;
-        Salary = salary;
-    }
 
 
-    public virtual void PrintInfo()
-    {
-        Console.WriteLine($"Namn: {Name}, Ålder {Age}");
-    }
-    public virtual void Introduce()
-    {
-        Console.WriteLine($"Hej, mitt namn är {Name} och jag är {Age} år gammal.");
-    }
-    public virtual void DoWork()
-    {
-        Console.WriteLine($"");
-    }
-}
 
 
 
