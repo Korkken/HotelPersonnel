@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -21,11 +22,11 @@ namespace HotelPersonnel
         }
         public override void PrintInfo() 
         {
-            Console.WriteLine($"Namn: {Name}, Ålder: {Age}");
+            base.PrintInfo();
         }
         public override void Introduce()
         {
-            Console.WriteLine($"Hej, mitt namn är {Name} och jag är {Age} år gammal.");
+            base.Introduce();
         }
         public void GiveAdvice()
         {
@@ -35,6 +36,10 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"Hourly Rate: {HourlyRate}");
             Console.WriteLine($"Consulting Firm: {ConsultingFirm}");
+        }
+        public override void DoWork()
+        {
+            Console.WriteLine($"{Name} arbetar med {Expertise}");
         }
     }
 }

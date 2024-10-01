@@ -19,11 +19,11 @@ namespace HotelPersonnel
         }
         public override void PrintInfo()
         {
-            Console.WriteLine($"Namn: {Name}, Ålder: {Age}");
+            base.PrintInfo();
         }
         public override void Introduce()
         {
-            Console.WriteLine($"Hej, mitt namn är {Name} och jag är {Age} år gammal.");
+            base.Introduce();
         }
         public void HoldMeeting()
         {
@@ -32,6 +32,10 @@ namespace HotelPersonnel
         public void PlanBudget()
         {
             Console.WriteLine($"{Name} Planerar budget för hotellet");
+        }
+        public override void DoWork()
+        {
+            Console.WriteLine($"{Name} håller på att planera och leda i Lyx svit avdelningen");
         }
     }
 }

@@ -7,24 +7,28 @@ using System.Xml.Linq;
 
 namespace HotelPersonnel
 {
-    internal class HouseKeeper : Person
+    public class HouseKeeper
     {
-        public HouseKeeper(string name, int age, string employeeId, DateTime startDate, decimal salary) 
-            : base(name, age, employeeId, startDate, salary)
+        private Person _person;
+        public string Name;
+        public int Age;
+
+
+        public HouseKeeper(string name, int age)
         {
+            _person = new Person(name, age, null, DateTime.Now, 0);
+            Name = name;
+            Age = age;
         }
 
-        public override void PrintInfo()
+        public void PrintInfo()
         {
-            Console.WriteLine($"Namn: {Name}, Ålder: {Age}");
+            _person.PrintInfo();
         }
-        public override void Introduce()
-        {
-            Console.WriteLine($"Hej, mitt namn är {Name} och jag är {Age} år gammal.");
-        }
+
         public void Work()
         {
-            Console.WriteLine($"{Name} Arbetar med att städa hotellrummen");
+            Console.WriteLine($"{Name} is cleaning the hotel rooms.");
         }
     }
 }

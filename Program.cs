@@ -2,74 +2,79 @@
 using HotelPersonnel;
 using System.Xml.Linq;
 
-
-Manager manager = new Manager(
-    name: "Lisa Ledarsson",
-    age: 40,
-    employeeId: "M001",
-    startDate: new DateTime(2020, 1, 1),
-    salary: 50000,
-    department: "Administration"
-);
-
-Employee employee = new Employee(
-        name: "Erik Eriksson",
-        age: 30,
-        employeeId: "E001",
-        startDate: new DateTime(2022, 3, 15),
-        salary: 30000m,
-        jobTitle: "Receptionist",
-        department: "Front Desk"
-);
-Consultant consultant = new Consultant
+List<Person> hotelStaff =
+[
+    new Manager(
+        name: "Lisa Ledarsson",
+        age: 40,
+        employeeId: "M001",
+        startDate: new DateTime(2020, 1, 1),
+        salary: 50000,
+        department: "Administration"
+),
+    new Employee(
+            name: "Erik Eriksson",
+            age: 30,
+            employeeId: "E001",
+            startDate: new DateTime(2022, 3, 15),
+            salary: 30000m,
+            jobTitle: "Receptionist",
+            department: "Front Desk"
+),
+    new Consultant
 (
-    name:"Eva Expert",
-    age: 35,
-    employeeId: "C001",
-    startDate: new DateTime(2023, 1, 1),
-    salary: 0, // Konsulter har ofta inte fast lön
-    hourlyRate: 1000,
-    consultingFirm: "Hotell Experterna AB",
-    expertise: "Hotelledare"
-);
+        name:"Eva Expert",
+        age: 35,
+        employeeId: "C001",
+        startDate: new DateTime(2023, 1, 1),
+        salary: 0,
+        hourlyRate: 1000,
+        consultingFirm: "Hotell Experterna AB",
+        expertise: "Hotelledare"
+)
+];
 
 
-Console.WriteLine("Manager:");
-manager.PrintInfo();
-manager.Introduce();
-manager.HoldMeeting();
-manager.PlanBudget();
+Console.WriteLine("Hotellets personal:");
+foreach (var person in hotelStaff)
+{
+    person.PrintInfo();
+    person.Introduce();
+    person.DoWork();
+    if (person is Manager manager)
+    {
+        manager.HoldMeeting();
+    }
+    else if (person is Employee employee)
+    {
+        employee.Work();
+    }
+    else if (person is Consultant consultant)
+    {
+        consultant.GiveAdvice();
+    }
 
-Console.WriteLine("\nEmployee:");
-employee.PrintInfo();
-employee.Introduce();
-employee.Work();
+    Console.WriteLine();
+}
 
-Console.WriteLine("\nConsultant:");
-consultant.PrintInfo();
-consultant.Introduce();
-consultant.GiveAdvice();
-consultant.PayRate();
+double averageAge = hotelStaff.Average(p => p.Age);
+decimal totalSalary = hotelStaff.Sum(p => p.Salary);
 
-HouseKeeper anna = new HouseKeeper
-    (
-    name: "Anna Clean",
-    age: 32,
-    employeeId: "M001",
-    startDate: new DateTime(2020, 1, 1),
-    salary: 50000
-    );
+Console.WriteLine($"Genomsnittlig ålder på personalen: {averageAge:F1} år");
+Console.WriteLine($"Total månadslön för anställda: {totalSalary:C}");
+
+HouseKeeper anna = new HouseKeeper(name: "Anna Clean", age: 32);
 Console.WriteLine("\nHouseKeeper:");
-anna.PrintInfo(); // Skriver ut namn och ålder
-anna.Work(); // Skriver ut att Anna städar hotellrummen
+anna.PrintInfo();
+anna.Work(); 
 
 public class Person
 {
-    public string Name { get; set; }
-    public int Age  { get; set; }
-    public string EmployeeId  { get; set; }
-    public DateTime StartDate  { get; set; }
-    public decimal Salary { get; set; }
+    public string Name;
+    public int Age;
+    public string EmployeeId;
+    public DateTime StartDate;
+    public decimal Salary;
 
     public Person(string name, int age, string employeeId, DateTime startDate, decimal salary)
     {
@@ -88,6 +93,10 @@ public class Person
     public virtual void Introduce()
     {
         Console.WriteLine($"Hej, mitt namn är {Name} och jag är {Age} år gammal.");
+    }
+    public virtual void DoWork()
+    {
+        Console.WriteLine($"");
     }
 }
 
