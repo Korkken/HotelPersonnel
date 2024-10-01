@@ -41,5 +41,9 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"{Name} arbetar med {Expertise}");
         }
+        public override void CalculateYearsOfService()
+        {
+            base.CalculateYearsOfService();
+        }
     }
 }

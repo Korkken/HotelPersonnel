@@ -36,5 +36,10 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"");
         }
+        public virtual void CalculateYearsOfService()
+        {
+            int yearsOfService = DateTime.Now.Year - StartDate.Year;
+            Console.WriteLine($"{Name} har varit anställd i {yearsOfService} år");
+        }
     }
 }

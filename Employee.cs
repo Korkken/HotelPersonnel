@@ -34,6 +34,10 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"{Name} håller på att utföra sitt på {JobTitle}");
         }
+        public override void CalculateYearsOfService()
+        {
+            base.CalculateYearsOfService();
+        }
 
     }
 

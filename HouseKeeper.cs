@@ -26,5 +26,9 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"{Name} Håller på att städa rummen");
         }
+        public override void CalculateYearsOfService()
+        {
+            base.CalculateYearsOfService();
+        }
     }
 }

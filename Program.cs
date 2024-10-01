@@ -51,6 +51,7 @@ foreach (var person in hotelStaff)
 {
     person.PrintInfo();
     person.Introduce();
+    person.CalculateYearsOfService();
     if (person is Manager manager)
     {
         manager.HoldMeeting();
@@ -70,6 +71,11 @@ foreach (var person in hotelStaff)
 {
     person.DoWork();
 }
+double averageAge = hotelStaff.Average(p => p.Age);
+decimal totalSalary = hotelStaff.Sum(p => p.Salary);
+
+Console.WriteLine($"\nGenomsnittlig ålder på personalen: {averageAge:F1} år");
+Console.WriteLine($"Total månadslön för anställda: {totalSalary:C}");
 
 
 

@@ -37,5 +37,9 @@ namespace HotelPersonnel
         {
             Console.WriteLine($"{Name} håller på att planera och leda i Lyx svit avdelningen");
         }
+        public override void CalculateYearsOfService()
+        {
+            base.CalculateYearsOfService();
+        }
     }
 }
