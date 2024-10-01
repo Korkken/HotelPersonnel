@@ -32,7 +32,7 @@ namespace HotelPersonnel
         }
         public override void DoWork()
         {
-            Console.WriteLine($"{Name} håller på att utföra sitt arbete som en {JobTitle}");
+            Console.WriteLine($"{Name} håller på att utföra sitt på {JobTitle}");
         }
 
     }

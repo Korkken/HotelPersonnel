@@ -2,7 +2,14 @@
 using HotelPersonnel;
 using System.Xml.Linq;
 
-List<Person> hotelStaff =
+
+HotelStaff();
+StaffWork();
+
+
+void HotelStaff()
+{
+    List<Person> hotelStaff =
 [
     new Manager(
         name: "Lisa Ledarsson",
@@ -31,43 +38,53 @@ List<Person> hotelStaff =
         hourlyRate: 1000,
         consultingFirm: "Hotell Experterna AB",
         expertise: "Hotelledare"
-)
+),
+    new HouseKeeper
+    (
+        name: "Anna clean",
+        age: 32,
+        employeeId: "D001",
+        startDate: new DateTime(2022, 1, 2),
+        salary: 30000
+        )
 ];
 
 
-Console.WriteLine("Hotellets personal:");
-foreach (var person in hotelStaff)
-{
-    person.PrintInfo();
-    person.Introduce();
-    person.DoWork();
-    if (person is Manager manager)
+    Console.WriteLine("Hotellets personal:");
+    foreach (var person in hotelStaff)
     {
-        manager.HoldMeeting();
-    }
-    else if (person is Employee employee)
-    {
-        employee.Work();
-    }
-    else if (person is Consultant consultant)
-    {
-        consultant.GiveAdvice();
-    }
+        person.PrintInfo();
+        person.Introduce();
+        if (person is Manager manager)
+        {
+            manager.HoldMeeting();
+        }
+        else if (person is Employee employee)
+        {
+            employee.Work();
+        }
+        else if (person is Consultant consultant)
+        {
+            consultant.GiveAdvice();
+        }
 
-    Console.WriteLine();
+        Console.WriteLine();
+    }
 }
+void StaffWork()
+{
+    List<Person> staff = new List<Person>();
 
-double averageAge = hotelStaff.Average(p => p.Age);
-decimal totalSalary = hotelStaff.Sum(p => p.Salary);
+    staff.Add(new Manager("Lisa Ledarsson", 40, "M001", new DateTime(2020, 1, 1), 50000, "Administration"));
+    staff.Add(new Employee("Erik Eriksson", 30, "E001", new DateTime(2022, 3, 15), 30000, "Receptionist", "Front Desk"));
+    staff.Add(new Consultant("Eva Expert", 35, 1000, "Hotell Experterna AB", "C001", new DateTime(2023, 1, 1), 0, "Hotelledare"));
+    staff.Add(new HouseKeeper("Anna clean", 32, "D001", new DateTime(2022, 1, 2), 30000));
 
-Console.WriteLine($"Genomsnittlig ålder på personalen: {averageAge:F1} år");
-Console.WriteLine($"Total månadslön för anställda: {totalSalary:C}");
-
-HouseKeeper anna = new HouseKeeper(name: "Anna Clean", age: 32);
-Console.WriteLine("\nHouseKeeper:");
-anna.PrintInfo();
-anna.Work(); 
-
+    foreach (Person person in staff)
+    {
+        person.DoWork();
+    }
+}
 public class Person
 {
     public string Name;
@@ -99,5 +116,6 @@ public class Person
         Console.WriteLine($"");
     }
 }
+
 
 
